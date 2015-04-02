@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import serial
-#import binascii
+import binascii
 
 port = serial.Serial("/dev/ttyAMA0", baudrate = 57600, timeout = 2)
 
@@ -32,5 +32,5 @@ initial = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x01\x00\xda\x61')
 waveleft = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x0e\x00\xda\x43')
 waveright = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x0d\x00\xda\x49')
 
-port.write(initial)
+port.write(waveright)
 port.close()
