@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo ./motion -c motion-mmalcam.conf
+sudo ./home/pi/Darwin/streaming/motion -c /home/pi/Darwin/streaming/motion-mmalcam.conf
