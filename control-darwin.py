@@ -8,7 +8,7 @@ import tty
 
 # Initialize Serial Port
 
-port = serial.Serial("/dev/ttyAMA0", baudrate = 57600, timeout = 2)
+port = serial.Serial("/dev/ttyAMA0", baudrate = 57600, timeout = 0.5)
 
 sit = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x03\x00\xd9\xed')
 stand = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x04\x00\xda\x7f')
@@ -48,21 +48,30 @@ while 1:
 		break
 	if x == "i":
 		port.write(initial)
+		print(x)
 	if x == "w":
 		port.write(forward)
+		print(x)
 	if x == "a":
 		port.write(sideleft)
+		print(x)
 	if x == "s":
 		port.write(sideright)
+		print(x)
         if x == "d":
-                port.write(forward)
+                port.write(reverse)
+		print(x)
         if x == "q":
                 port.write(turnleft)
+		print(x)
         if x == "r":
                 port.write(turnright)
+		print(x)
         if x == "t":
                 port.write(waveleft)
+		print(x)
         if x == "y":
                 port.write(waveright)
+		print(x)
 #        if x == "":
 #                port.write()
