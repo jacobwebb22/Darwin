@@ -8,10 +8,11 @@ import tty
 
 # Initialize Serial Port
 
-port = serial.Serial("/dev/ttyAMA0", baudrate = 57600, timeout = 0.5)
+#port = serial.Serial("/dev/ttyAMA0", baudrate = 57600, timeout = 0.5)
+port = serial.Serial("/dev/ttyAMA0", baudrate = 57600)
 
 sit = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x03\x00\xd9\xed')
-stand = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x04\x00\xda\x7f')
+stand = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x02\x00\xda\x6b')
 forward = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x13\x00\xda\x0d')
 reverse = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x14\x00\xd9\x9f')
 sideleft = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x12\x00\xd9\x8b')
@@ -21,6 +22,8 @@ turnright = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x0f\x00\xd9\xc5')
 initial = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x01\x00\xda\x61')
 waveleft = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x0e\x00\xda\x43')
 waveright = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x0d\x00\xda\x49')
+fastadvance = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x27\x00\xd9\x35')
+stopadvance = (b'\xff\xff\xfd\x00\xc8\x07\x00\x03\x42\x00\x00\x00\xd9\xe7')
 
 # Get Keypress Function
 
@@ -56,15 +59,15 @@ while 1:
 		port.write(sideleft)
 		print(x)
 	if x == "s":
-		port.write(sideright)
+		port.write(reverse)
 		print(x)
         if x == "d":
-                port.write(reverse)
+                port.write(sideright)
 		print(x)
         if x == "q":
                 port.write(turnleft)
 		print(x)
-        if x == "r":
+        if x == "e":
                 port.write(turnright)
 		print(x)
         if x == "t":
@@ -73,5 +76,8 @@ while 1:
         if x == "y":
                 port.write(waveright)
 		print(x)
+        if x== "u":
+                port.write(stand)
+                print(x)
 #        if x == "":
 #                port.write()
